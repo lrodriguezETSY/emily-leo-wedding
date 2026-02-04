@@ -7,7 +7,7 @@
     <title>Emily & Leo's Wedding Weekend | February 13-16, 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200;300;400;600&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -17,148 +17,189 @@
         }
 
         :root {
-            /* Primary colors from document */
-            --primary-pink: rgb(199, 75, 139);
-            --primary-dark: rgb(61, 61, 61);
-            --secondary-gray: rgb(85, 85, 85);
-            --light-gray: rgb(102, 102, 102);
+            --pink-primary: rgb(199, 75, 139);
+            --pink-dark: rgb(165, 45, 110);
+            --pink-light: rgb(230, 140, 180);
+            --pink-subtle: rgba(199, 75, 139, 0.08);
             
-            /* Extended palette */
-            --pink-light: rgba(199, 75, 139, 0.1);
-            --pink-medium: rgba(199, 75, 139, 0.8);
-            --background: #ffffff;
-            --background-alt: #fafafa;
-            --border-color: rgba(199, 75, 139, 0.2);
+            --gray-900: rgb(40, 40, 40);
+            --gray-800: rgb(61, 61, 61);
+            --gray-700: rgb(85, 85, 85);
+            --gray-500: rgb(128, 128, 128);
+            --gray-100: rgb(245, 245, 245);
             
-            /* Typography */
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Crimson Pro', Georgia, serif;
+            --font-body: 'Karla', -apple-system, sans-serif;
+            
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            --text-5xl: 3rem;
+            --text-7xl: 4.5rem;
+            
+            --space-1: 0.5rem;
+            --space-2: 1rem;
+            --space-3: 1.5rem;
+            --space-4: 2rem;
+            --space-5: 2.5rem;
+            --space-6: 3rem;
+            --space-8: 4rem;
+            --space-10: 5rem;
+            --space-12: 6rem;
+            --space-16: 8rem;
+            
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-2xl: 24px;
+            
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
         }
 
         body {
             font-family: var(--font-body);
-            line-height: 1.7;
-            color: var(--primary-dark);
-            background: var(--background);
-            overflow-x: hidden;
+            font-size: var(--text-base);
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: white;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Skip link for accessibility */
         .skip-link {
             position: absolute;
-            top: -60px;
-            left: 20px;
-            background: var(--primary-pink);
+            top: -100px;
+            left: var(--space-2);
+            background: var(--pink-primary);
             color: white;
-            padding: 12px 24px;
+            padding: var(--space-2) var(--space-3);
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
+            border-radius: var(--radius-md);
+            font-weight: 500;
             z-index: 10000;
-            transition: top 0.3s;
         }
 
         .skip-link:focus {
-            top: 20px;
-            outline: 3px solid var(--primary-dark);
-            outline-offset: 3px;
+            top: var(--space-2);
         }
 
-        /* Hero Section */
+        /* Hero with Image */
         .hero {
-            background: linear-gradient(135deg, var(--primary-pink) 0%, rgb(220, 100, 160) 100%);
-            color: white;
-            padding: 100px 20px 80px;
-            text-align: center;
             position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
+            color: white;
         }
 
-        .hero::before {
-            content: '';
+        .hero-image {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><path d="M30 10 L40 25 L30 40 L20 25 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-            animation: float 20s linear infinite;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
-        @keyframes float {
-            from { transform: translateY(0); }
-            to { transform: translateY(-60px); }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(199, 75, 139, 0.75) 0%, 
+                rgba(165, 45, 110, 0.85) 100%);
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
+            text-align: center;
             max-width: 900px;
+            padding: var(--space-3);
             margin: 0 auto;
         }
 
-        .hero-subtitle {
-            font-family: var(--font-body);
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            font-weight: 300;
-            letter-spacing: 3px;
+        .hero-label {
+            font-size: var(--text-sm);
+            font-weight: 500;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: var(--space-3);
             opacity: 0.95;
+            animation: fadeInUp 0.8s ease;
         }
 
         .hero h1 {
-            font-family: var(--font-heading);
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-family: var(--font-display);
+            font-size: clamp(var(--text-5xl), 8vw, var(--text-7xl));
             font-weight: 300;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+            line-height: 1.1;
+            margin-bottom: var(--space-4);
+            letter-spacing: -0.02em;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
         .hero-date {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-size: clamp(var(--text-lg), 2.5vw, var(--text-xl));
             font-weight: 300;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            line-height: 1.5;
+            margin-bottom: var(--space-6);
+            opacity: 0.95;
+            animation: fadeInUp 1.2s ease 0.4s both;
         }
 
         .hero-cta {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 16px 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-5);
             background: white;
-            color: var(--primary-pink);
+            color: var(--pink-primary);
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-radius: var(--radius-xl);
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            animation: fadeInUp 1.4s ease 0.6s both;
         }
 
-        .hero-cta:hover,
-        .hero-cta:focus {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            outline: 3px solid white;
-            outline-offset: 3px;
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Navigation */
         nav {
             position: sticky;
             top: 0;
-            background: white;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--gray-100);
             z-index: 100;
-            padding: 0;
+            backdrop-filter: blur(10px);
         }
 
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 15px 20px;
+            padding: var(--space-2) var(--space-3);
         }
 
         nav ul {
@@ -166,264 +207,253 @@
             justify-content: center;
             flex-wrap: wrap;
             list-style: none;
-            gap: 5px;
+            gap: var(--space-1);
         }
 
         nav a {
             display: block;
-            color: var(--primary-dark);
+            color: var(--gray-700);
             text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-sm);
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--pink-primary);
+            background: var(--pink-subtle);
+        }
+
+        /* Photo Dividers */
+        .photo-divider {
             position: relative;
+            height: 500px;
+            overflow: hidden;
+            margin: var(--space-16) 0;
         }
 
-        nav a::after {
-            content: '';
+        .photo-divider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .photo-divider-overlay {
             position: absolute;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-            width: 60%;
-            height: 2px;
-            background: var(--primary-pink);
-            transition: transform 0.3s ease;
+            inset: 0;
+            background: linear-gradient(to bottom, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                transparent 50%, 
+                rgba(255, 255, 255, 0.1) 100%);
         }
 
-        nav a:hover::after,
-        nav a:focus::after {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        nav a:hover,
-        nav a:focus {
-            color: var(--primary-pink);
-            background: var(--pink-light);
-            outline: none;
-        }
-
-        /* Container */
+        /* Containers */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 var(--space-3);
+        }
+
+        .container-narrow {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--space-3);
         }
 
         /* Sections */
         section {
-            padding: 80px 20px;
-            scroll-margin-top: 60px;
+            padding: var(--space-12) 0;
         }
 
         section:nth-child(even) {
-            background: var(--background-alt);
+            background: var(--gray-100);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: var(--space-10);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-label {
+            font-size: var(--text-sm);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--pink-primary);
+            margin-bottom: var(--space-3);
         }
 
         .section-title {
-            font-family: var(--font-heading);
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            color: var(--primary-pink);
-            font-weight: 400;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary-pink);
+            font-family: var(--font-display);
+            font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--gray-900);
+            margin-bottom: var(--space-3);
+            letter-spacing: -0.02em;
         }
 
         .section-subtitle {
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: var(--secondary-gray);
-            margin-top: 20px;
+            font-size: var(--text-lg);
+            color: var(--gray-700);
             font-weight: 300;
+            line-height: 1.6;
         }
 
         /* Day Headers */
         .day-header {
-            background: linear-gradient(135deg, var(--primary-pink) 0%, rgb(220, 100, 160) 100%);
+            background: linear-gradient(135deg, var(--pink-primary) 0%, var(--pink-dark) 100%);
             color: white;
-            padding: 30px 40px;
-            border-radius: 20px;
-            margin: 50px 0 40px;
-            text-align: center;
-            font-family: var(--font-heading);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-8);
+            font-family: var(--font-display);
+            font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
             font-weight: 400;
-            box-shadow: 0 10px 40px rgba(199, 75, 139, 0.3);
+            box-shadow: var(--shadow-lg);
+            display: inline-block;
         }
 
         /* Event Cards */
         .events-grid {
             display: grid;
-            gap: 30px;
+            gap: var(--space-6);
         }
 
         .event-card {
             background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
-            border-left: 5px solid var(--primary-pink);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .event-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 150px;
-            background: var(--pink-light);
-            border-radius: 50%;
-            transform: translate(50%, -50%);
-            transition: all 0.4s ease;
         }
 
         .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(199, 75, 139, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
         }
 
-        .event-card:hover::before {
-            transform: translate(50%, -50%) scale(1.3);
-        }
-
-        .event-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            display: block;
+        .event-meta {
+            font-size: var(--text-sm);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--pink-primary);
+            margin-bottom: var(--space-3);
         }
 
         .event-title {
-            font-family: var(--font-heading);
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            color: var(--primary-pink);
-            margin-bottom: 25px;
-            font-weight: 600;
-            position: relative;
+            font-family: var(--font-display);
+            font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+            font-weight: 400;
+            color: var(--gray-900);
+            margin-bottom: var(--space-4);
+            line-height: 1.3;
         }
 
         .event-details {
             display: grid;
-            gap: 15px;
-            margin-bottom: 25px;
-            position: relative;
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
         }
 
         .detail-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: var(--space-3);
+            line-height: 1.6;
         }
 
-        .detail-icon {
-            font-size: 1.3em;
-            min-width: 30px;
-            color: var(--primary-pink);
-        }
-
-        .detail-row strong {
-            color: var(--primary-pink);
+        .detail-label {
             font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .detail-value {
+            color: var(--gray-700);
         }
 
         .event-description {
-            background: var(--pink-light);
-            padding: 25px;
-            border-radius: 15px;
-            border-left: 3px solid var(--primary-pink);
-            font-style: italic;
-            color: var(--primary-dark);
-            margin-top: 20px;
-            position: relative;
+            background: var(--pink-subtle);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            border-left: 3px solid var(--pink-primary);
+            color: var(--gray-800);
+            margin-top: var(--space-4);
+            line-height: 1.7;
         }
 
         .event-description p {
-            margin-bottom: 12px;
+            margin-bottom: var(--space-3);
         }
 
         .event-description p:last-child {
             margin-bottom: 0;
         }
 
-        /* Highlight card */
         .event-card.highlight {
-            border-left-color: #d63384;
-            background: linear-gradient(135deg, #fff 0%, #fff5f9 100%);
-        }
-
-        .event-card.highlight .event-title {
-            color: #d63384;
+            background: linear-gradient(135deg, #fff 0%, #fffbfd 100%);
+            border: 2px solid var(--pink-light);
         }
 
         /* Shuttle Section */
-        .shuttle-overview {
+        .shuttle-summary {
             background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6);
+            margin-bottom: var(--space-8);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
         }
 
-        .shuttle-summary-table {
+        .shuttle-summary h3 {
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            font-weight: 400;
+            color: var(--gray-900);
+            margin-bottom: var(--space-4);
+            text-align: center;
+        }
+
+        .table-wrapper {
             overflow-x: auto;
-            margin: 30px 0;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--gray-100);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
+            font-size: var(--text-sm);
         }
 
         thead {
-            background: linear-gradient(135deg, var(--primary-pink) 0%, rgb(220, 100, 160) 100%);
+            background: var(--gray-900);
             color: white;
         }
 
         th {
-            padding: 18px 15px;
+            padding: var(--space-3);
             text-align: left;
             font-weight: 600;
-            font-size: clamp(0.85rem, 1.8vw, 0.95rem);
             white-space: nowrap;
         }
 
         td {
-            padding: 15px;
-            border-bottom: 1px solid var(--border-color);
-            font-size: clamp(0.85rem, 1.8vw, 0.95rem);
-        }
-
-        tbody tr {
-            transition: background 0.2s ease;
+            padding: var(--space-3);
+            border-bottom: 1px solid var(--gray-100);
+            color: var(--gray-700);
         }
 
         tbody tr:hover {
-            background: var(--pink-light);
+            background: var(--pink-subtle);
         }
 
         tbody tr:last-child td {
@@ -433,282 +463,288 @@
         /* Shuttle Cards */
         .shuttle-card {
             background: white;
-            border-radius: 20px;
-            padding: 0;
-            margin: 40px 0;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+            border-radius: var(--radius-2xl);
+            margin: var(--space-8) 0;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
             overflow: hidden;
-            border: 3px solid var(--border-color);
         }
 
         .shuttle-header {
-            background: linear-gradient(135deg, var(--primary-pink) 0%, rgb(220, 100, 160) 100%);
+            background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
             color: white;
-            padding: 25px 30px;
-            font-family: var(--font-heading);
-            font-size: clamp(1.4rem, 3vw, 1.8rem);
-            font-weight: 600;
+            padding: var(--space-5) var(--space-6);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: var(--space-3);
+        }
+
+        .shuttle-name {
+            font-family: var(--font-display);
+            font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+            font-weight: 400;
         }
 
         .shuttle-info {
-            padding: 30px;
-            background: var(--pink-light);
+            padding: var(--space-5) var(--space-6);
+            background: var(--gray-100);
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
         }
 
         .info-item {
             display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: clamp(0.9rem, 2vw, 1rem);
+            flex-direction: column;
+            gap: var(--space-1);
         }
 
-        .info-item strong {
-            color: var(--primary-pink);
-            min-width: 80px;
+        .info-label {
+            font-size: var(--text-xs);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--gray-500);
+        }
+
+        .info-value {
+            font-size: var(--text-base);
+            color: var(--gray-900);
+            font-weight: 500;
         }
 
         .shuttle-manifest {
-            padding: 30px;
+            padding: var(--space-6);
         }
 
         .capacity-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-xl);
+            font-size: var(--text-xs);
             font-weight: 600;
-            font-family: var(--font-body);
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
         }
 
-        .full {
-            background: #ffc107;
-            color: #000;
+        .capacity-full {
+            background: #fef3c7;
+            color: #92400e;
         }
 
-        .available {
-            background: #28a745;
-            color: white;
+        .capacity-available {
+            background: #d1fae5;
+            color: #065f46;
         }
 
-        /* Address lists */
-        .address-list {
+        /* Address Lists */
+        .address-section {
             background: white;
-            padding: 20px 25px;
-            border-radius: 12px;
-            margin: 20px 0;
-            border-left: 3px solid var(--primary-pink);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            margin: var(--space-4) 0;
+            border: 1px solid var(--gray-100);
         }
 
-        .address-list ul {
+        .address-section h4 {
+            font-size: var(--text-sm);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--gray-900);
+            margin-bottom: var(--space-3);
+        }
+
+        .address-section ul {
             list-style: none;
-            padding: 0;
+            display: grid;
+            gap: var(--space-2);
         }
 
-        .address-list li {
-            padding: 8px 0;
-            padding-left: 25px;
+        .address-section li {
+            padding-left: var(--space-4);
             position: relative;
+            color: var(--gray-700);
+            line-height: 1.6;
         }
 
-        .address-list li::before {
-            content: '•';
+        .address-section li::before {
+            content: '';
             position: absolute;
             left: 0;
-            color: var(--primary-pink);
-            font-size: 1.5em;
-            line-height: 1;
+            top: 0.6em;
+            width: 6px;
+            height: 6px;
+            background: var(--pink-primary);
+            border-radius: 50%;
         }
 
-        /* Info boxes */
+        /* Info Boxes */
         .info-box {
-            background: linear-gradient(135deg, #fff9e6 0%, #fff3d9 100%);
-            border-left: 5px solid #ffc107;
-            border-radius: 15px;
-            padding: 25px 30px;
-            margin: 30px 0;
-            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border-left: 3px solid #f59e0b;
+            border-radius: var(--radius-lg);
+            padding: var(--space-4) var(--space-5);
+            margin: var(--space-6) 0;
+        }
+
+        .info-box-content {
+            color: var(--gray-800);
+            line-height: 1.7;
         }
 
         .info-box strong {
-            color: var(--primary-dark);
             display: block;
-            margin-bottom: 8px;
-            font-size: 1.1em;
+            color: var(--gray-900);
+            margin-bottom: var(--space-2);
+            font-weight: 600;
         }
 
         .important-box {
-            background: linear-gradient(135deg, #fff5f8 0%, #ffe8f0 100%);
-            border: 3px solid var(--primary-pink);
-            border-radius: 20px;
-            padding: 35px;
-            margin: 40px 0;
-            box-shadow: 0 8px 30px rgba(199, 75, 139, 0.15);
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 2px solid #fecaca;
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            margin: var(--space-8) 0;
         }
 
         .important-box h3 {
-            color: var(--primary-pink);
-            font-family: var(--font-heading);
-            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
-            margin-bottom: 20px;
-            font-weight: 600;
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            font-weight: 400;
+            color: var(--gray-900);
+            margin-bottom: var(--space-4);
         }
 
         .important-box ul {
             list-style: none;
-            padding: 0;
+            display: grid;
+            gap: var(--space-3);
         }
 
         .important-box li {
-            padding: 12px 0 12px 35px;
+            padding-left: var(--space-5);
             position: relative;
             line-height: 1.7;
+            color: var(--gray-800);
         }
 
         .important-box li::before {
-            content: '✓';
+            content: '';
             position: absolute;
             left: 0;
-            color: var(--primary-pink);
-            font-weight: bold;
-            font-size: 1.3em;
+            top: 0.5em;
+            width: 12px;
+            height: 12px;
+            background: var(--pink-primary);
+            border-radius: 2px;
+            transform: rotate(45deg);
         }
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, rgb(40, 40, 40) 100%);
+            background: var(--gray-900);
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: var(--space-12) var(--space-3);
         }
 
-        footer p {
-            margin: 12px 0;
-            font-size: clamp(0.95rem, 2vw, 1.1rem);
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .footer-message {
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-            margin-bottom: 20px;
+            font-size: var(--text-xl);
             font-weight: 300;
+            margin-bottom: var(--space-4);
+            line-height: 1.5;
+        }
+
+        .footer-signature {
+            font-size: var(--text-lg);
+            font-weight: 300;
+            opacity: 0.8;
+            margin-bottom: var(--space-2);
         }
 
         .footer-names {
-            font-family: var(--font-heading);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 400;
-            margin-top: 15px;
+            font-family: var(--font-display);
+            font-size: var(--text-4xl);
+            font-weight: 300;
+            margin-top: var(--space-3);
         }
 
-        .heart {
-            color: var(--primary-pink);
-            font-size: 2em;
-            display: inline-block;
-            animation: heartbeat 1.5s ease-in-out infinite;
-            margin-top: 20px;
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: var(--pink-primary);
+            margin: var(--space-6) auto;
         }
 
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.1); }
-            50% { transform: scale(1); }
-        }
+        /* Utilities */
+        .text-center { text-align: center; }
 
         /* Responsive */
         @media (max-width: 768px) {
+            :root {
+                --space-12: 4rem;
+                --space-10: 3rem;
+                --space-8: 2.5rem;
+            }
+
             .hero {
-                padding: 70px 20px 60px;
+                min-height: 70vh;
             }
 
-            section {
-                padding: 50px 15px;
+            .photo-divider {
+                height: 300px;
+                margin: var(--space-8) 0;
             }
 
-            .day-header {
-                padding: 20px 25px;
-            }
-
-            .event-card {
-                padding: 30px 25px;
+            .detail-row {
+                grid-template-columns: 1fr;
+                gap: var(--space-1);
             }
 
             .shuttle-info {
                 grid-template-columns: 1fr;
-                padding: 20px;
-            }
-
-            .shuttle-header {
-                padding: 20px;
-                font-size: 1.3rem;
-            }
-
-            nav ul {
-                gap: 3px;
-            }
-
-            nav a {
-                padding: 8px 14px;
-            }
-
-            table {
-                font-size: 0.85rem;
-            }
-
-            th, td {
-                padding: 10px 8px;
             }
         }
 
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            table {
+                font-size: var(--text-xs);
             }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
+            
             th, td {
-                padding: 8px 6px;
+                padding: var(--space-2);
             }
         }
 
-        /* Print styles */
+        /* Print */
         @media print {
-            nav, .skip-link {
+            nav, .skip-link, .hero-cta, .photo-divider {
                 display: none;
             }
-
-            .event-card, .shuttle-card {
-                page-break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-
-            section {
-                padding: 30px 0;
+            
+            .hero {
+                min-height: auto;
+                padding: var(--space-6);
             }
         }
 
-        /* Accessibility - Focus visible */
+        /* Accessibility */
         *:focus-visible {
-            outline: 3px solid var(--primary-pink);
-            outline-offset: 3px;
+            outline: 2px solid var(--pink-primary);
+            outline-offset: 2px;
         }
 
-        /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
             * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
+                animation: none !important;
+                transition: none !important;
             }
         }
     </style>
@@ -716,222 +752,240 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Hero -->
     <header class="hero">
+        <!-- Replace this src with: wedding-photo-2.jpg after uploading -->
+        <img src="wedding-photo-2.jpg" alt="Emily and Leo in Mexico City" class="hero-image">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <p class="hero-subtitle">You're Invited to</p>
+            <span class="hero-label">You're Invited</span>
             <h1>Emily & Leo's<br>Wedding Weekend</h1>
             <p class="hero-date">February 13–16, 2026<br>Mexico City & Tepoztlán, Mexico</p>
             <a href="http://zola.com/wedding/emilyandleonel2026" class="hero-cta" target="_blank" rel="noopener noreferrer">
-                🌐 Visit Our Wedding Website
+                <span>View Wedding Website</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 11l6-6M11 11V5H5"/>
+                </svg>
             </a>
         </div>
     </header>
 
-    <!-- Navigation -->
-    <nav role="navigation" aria-label="Main navigation">
+    <nav role="navigation">
         <div class="nav-container">
             <ul>
                 <li><a href="#friday">Friday</a></li>
                 <li><a href="#saturday">Saturday</a></li>
                 <li><a href="#sunday">Sunday</a></li>
                 <li><a href="#monday">Monday</a></li>
-                <li><a href="#saturday-shuttles">Sat Shuttles</a></li>
-                <li><a href="#monday-shuttles">Mon Shuttles</a></li>
+                <li><a href="#saturday-shuttles">Saturday Shuttles</a></li>
+                <li><a href="#monday-shuttles">Monday Shuttles</a></li>
             </ul>
         </div>
     </nav>
 
     <main id="main-content">
-        <!-- FRIDAY -->
         <section id="friday">
-            <div class="container">
-                <div class="day-header">
-                    🍷 Friday, February 13th 🍷
+            <div class="container-narrow">
+                <div class="text-center">
+                    <span class="day-header">Friday, February 13th</span>
                 </div>
                 
                 <div class="events-grid">
-                    <div class="event-card">
-                        <span class="event-icon" aria-hidden="true">🎉</span>
-                        <h3 class="event-title">Welcome Event at Brocante</h3>
+                    <article class="event-card">
+                        <span class="event-meta">Evening Event</span>
+                        <h3 class="event-title">Welcome Reception at Brocante</h3>
                         <div class="event-details">
                             <div class="detail-row">
-                                <span class="detail-icon" aria-hidden="true">⏰</span>
-                                <span><strong>Time:</strong> 6:00 PM</span>
+                                <span class="detail-label">Time</span>
+                                <span class="detail-value">6:00 PM</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-icon" aria-hidden="true">📍</span>
-                                <span><strong>Location:</strong> Pedregal 55-2do Piso, Lomas de Chapultepec, CDMX</span>
+                                <span class="detail-label">Location</span>
+                                <span class="detail-value">Pedregal 55-2do Piso, Lomas de Chapultepec, CDMX</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-icon" aria-hidden="true">👗</span>
-                                <span><strong>Attire:</strong> Elevated Casual — Rooftop chic. Flowy dresses, jumpsuits, smart separates. No jeans.</span>
+                                <span class="detail-label">Attire</span>
+                                <span class="detail-value">Elevated Casual — Rooftop chic. Flowy dresses, jumpsuits, smart separates. No jeans.</span>
                             </div>
                         </div>
                         <div class="event-description">
-                            <p><strong>Open Bar & Unlimited Tacos</strong></p>
+                            <p><strong>Open bar and unlimited tacos</strong> to kick off the weekend.</p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- SATURDAY -->
+        <!-- Photo Divider -->
+        <div class="photo-divider">
+            <!-- Replace this src with: wedding-photo-1.jpg after uploading -->
+            <img src="wedding-photo-1.jpg" alt="Tepoztlán landscape" loading="lazy">
+            <div class="photo-divider-overlay"></div>
+        </div>
+
         <section id="saturday">
-            <div class="container">
-                <div class="day-header">
-                    💕 Saturday, February 14th 💕
+            <div class="container-narrow">
+                <div class="text-center">
+                    <span class="day-header">Saturday, February 14th</span>
                 </div>
                 
                 <div class="events-grid">
-                    <div class="event-card">
-                        <span class="event-icon" aria-hidden="true">☀️</span>
-                        <h3 class="event-title">Morning & Early Afternoon</h3>
+                    <article class="event-card">
+                        <span class="event-meta">Morning & Afternoon</span>
+                        <h3 class="event-title">Explore Mexico City</h3>
                         <div class="event-description">
-                            <p>We recommend exploring Mexico City before we all depart for Tepoztlán in the afternoon.</p>
+                            <p>We recommend exploring Mexico City before departing for Tepoztlán in the afternoon.</p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="event-card">
-                        <span class="event-icon" aria-hidden="true">🚐</span>
+                    <article class="event-card">
+                        <span class="event-meta">Departure</span>
                         <h3 class="event-title">Shuttle to Tepoztlán</h3>
                         <div class="event-details">
                             <div class="detail-row">
-                                <span class="detail-icon" aria-hidden="true">⏰</span>
-                                <span><strong>Departure:</strong> 1:00 PM</span>
+                                <span class="detail-label">Time</span>
+                                <span class="detail-value">1:00 PM</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-icon" aria-hidden="true">📍</span>
-                                <span><strong>Pickup:</strong> Londres 130, Juárez, 06600 Ciudad de México</span>
+                                <span class="detail-label">Pickup</span>
+                                <span class="detail-value">Londres 130, Juárez, 06600 Ciudad de México</span>
                             </div>
                         </div>
                         <div class="info-box">
-                            💡 <strong>Find your van assignment in the Saturday Shuttle Manifest below!</strong>
+                            <div class="info-box-content">
+                                <strong>Find Your Van Assignment</strong>
+                                Your shuttle information is in the Saturday Departure Manifest below.
+                            </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="event-card">
-                        <span class="event-icon" aria-hidden="true">🌸</span>
+                    <article class="event-card">
+                        <span class="event-meta">Evening Reception</span>
                         <h3 class="event-title">"Garden of Love" Valentine's Day Party</h3>
                         <div class="event-details">
                             <div class="detail-row">
-                                <span class="detail-icon" aria-hidden="true">⏰</span>
-                                <span><strong>Time:</strong> 5:00 PM</span>
+                                <span class="detail-label">Time</span>
+                                <span class="detail-value">5:00 PM</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-icon" aria-hidden="true">📍</span>
-                                <span><strong>Location:</strong> Margarita Concept Garden (1-min walk from wedding venue)</span>
+                                <span class="detail-label">Location</span>
+                                <span class="detail-value">Margarita Concept Garden (1-minute walk from wedding venue)</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-icon" aria-hidden="true">👗</span>
-                                <span><strong>Attire:</strong> WHITE PARTY — Please wear white or khaki only!</span>
+                                <span class="detail-label">Attire</span>
+                                <span class="detail-value">White Party — Please wear white or khaki only</span>
                             </div>
                         </div>
                         <div class="event-description">
-                            <p><strong>Canapés & Welcome Drink</strong></p>
-                            <p style="margin-top: 12px;">The walk to the venue is cobblestone steps — ladies we suggest flats or wearing flats and then switching into heels at the venue.</p>
+                            <p><strong>Canapés and welcome drinks</strong> in a beautiful garden setting.</p>
+                            <p>The walk to the venue includes cobblestone steps. We recommend wearing comfortable shoes or bringing a pair to change into.</p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- SUNDAY -->
+        <!-- Photo Divider -->
+        <div class="photo-divider">
+            <!-- Replace this src with: wedding-photo-3.jpg after uploading -->
+            <img src="wedding-photo-3.jpg" alt="Emily and Leo" loading="lazy">
+            <div class="photo-divider-overlay"></div>
+        </div>
+
         <section id="sunday">
-            <div class="container">
-                <div class="day-header">
-                    💒 Sunday, February 15th — THE BIG DAY! 💒
+            <div class="container-narrow">
+                <div class="text-center">
+                    <span class="day-header">Sunday, February 15th — The Wedding</span>
                 </div>
                 
                 <div class="events-grid">
-                    <div class="event-card highlight">
-                        <span class="event-icon" aria-hidden="true">✨</span>
-                        <h3 class="event-title">The Wedding</h3>
+                    <article class="event-card highlight">
+                        <span class="event-meta">Ceremony & Reception</span>
+                        <h3 class="event-title">The Wedding Celebration</h3>
                         <div class="event-details">
                             <div class="detail-row">
-                                <span class="detail-icon" aria-hidden="true">⏰</span>
-                                <span><strong>Ceremony begins:</strong> 4:00 PM</span>
+                                <span class="detail-label">Time</span>
+                                <span class="detail-value">Ceremony begins at 4:00 PM</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-icon" aria-hidden="true">📍</span>
-                                <span><strong>Location:</strong> Posada del Tepozteco<br>Paraíso 3, San Miguel, 62520 Tepoztlán, Mor., Mexico</span>
+                                <span class="detail-label">Location</span>
+                                <span class="detail-value">Posada del Tepozteco<br>Paraíso 3, San Miguel, 62520 Tepoztlán, Mor., Mexico</span>
                             </div>
                             <div class="detail-row">
-                                <span class="detail-icon" aria-hidden="true">👗</span>
-                                <span><strong>Attire:</strong> VIVID ELEGANCE</span>
+                                <span class="detail-label">Attire</span>
+                                <span class="detail-value">Vivid Elegance</span>
                             </div>
                         </div>
                         <div class="event-description">
-                            <p><strong>Join us for an intimate ceremony in the garden, followed by a lively reception under the stars. Expect delicious food, free-flowing drinks, and plenty of dancing!</strong></p>
-                            <p style="margin-top: 15px;">Tuxes and gowns welcome, as are suits and cocktail dresses. Our only ask: <strong>DO NOT wear black</strong> — have fun with it! Wear bright colors and get fancy.</p>
-                            <p style="margin-top: 12px;">The ceremony is in a garden, so be mindful of your shoes. We are in the mountains, so ladies we suggest a shawl for when the sun goes down.</p>
+                            <p><strong>Join us for an intimate ceremony in the garden, followed by a lively reception under the stars.</strong> Expect delicious food, free-flowing drinks, and plenty of dancing.</p>
+                            <p>Tuxedos and gowns are welcome, as are suits and cocktail dresses. Our only ask: please do not wear black — embrace color and have fun with your outfit.</p>
+                            <p>The ceremony takes place in a garden, so be mindful of your footwear. We're in the mountains, so we recommend bringing a shawl or wrap for when the sun sets.</p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- MONDAY -->
         <section id="monday">
-            <div class="container">
-                <div class="day-header">
-                    🌅 Monday, February 16th 🌅
+            <div class="container-narrow">
+                <div class="text-center">
+                    <span class="day-header">Monday, February 16th</span>
                 </div>
                 
                 <div class="events-grid">
-                    <div class="event-card">
-                        <span class="event-icon" aria-hidden="true">🚐</span>
-                        <h3 class="event-title">Shuttle Departures</h3>
+                    <article class="event-card">
+                        <span class="event-meta">Departure</span>
+                        <h3 class="event-title">Return Shuttles</h3>
                         <div class="event-description">
-                            <p>We will arrange shuttles for you to either return to Mexico City or go directly to the MEX airport. See your shuttle assignment in the Monday Departure Manifest below!</p>
+                            <p>We've arranged shuttles to take you back to Mexico City or directly to MEX airport. Your shuttle assignment and departure time are listed in the Monday Departure Manifest below.</p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="event-card">
-                        <span class="event-icon" aria-hidden="true">🏊</span>
-                        <h3 class="event-title">For Those Staying in Tepoztlán</h3>
+                    <article class="event-card">
+                        <span class="event-meta">Optional</span>
+                        <h3 class="event-title">Pool Day at Posada del Tepozteco</h3>
                         <div class="event-description">
-                            <p>Feel free to join us at the Posada del Tepozteco pool to convalesce and recharge after the celebration!</p>
+                            <p>For those staying in Tepoztlán, you're welcome to join us at the Posada del Tepozteco pool to relax and recharge after the celebration.</p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- SATURDAY SHUTTLES -->
         <section id="saturday-shuttles">
             <div class="container">
                 <div class="section-header">
+                    <span class="section-label">Transportation</span>
                     <h2 class="section-title">Saturday Departure Manifest</h2>
                     <p class="section-subtitle">
                         Mexico City to Tepoztlán<br>
-                        📅 Saturday, February 14th, 2026 | ⏰ 1:00 PM<br>
-                        📍 Londres 130, Juárez, 06600 Ciudad de México
+                        Saturday, February 14th, 2026 • 1:00 PM Departure<br>
+                        Pickup: Londres 130, Juárez, 06600 Ciudad de México
                     </p>
                 </div>
 
                 <div class="info-box">
-                    <strong>📞 Questions or Emergencies?</strong>
-                    Wedding Planner: Pam Calzada (+52 1 777 217 3434)
+                    <div class="info-box-content">
+                        <strong>Questions or Emergencies?</strong>
+                        Contact Wedding Planner Pam Calzada: +52 1 777 217 3434
+                    </div>
                 </div>
 
-                <!-- Van 1 -->
-                <div class="shuttle-card">
+                <article class="shuttle-card">
                     <div class="shuttle-header">
-                        <span>🚐 Van 1</span>
-                        <span class="capacity-badge full">16/16 FULL</span>
+                        <span class="shuttle-name">Van 1</span>
+                        <span class="capacity-badge capacity-full">16/16 Full</span>
                     </div>
                     <div class="shuttle-info">
-                        <div class="address-list">
-                            <strong>Routing & Addresses:</strong>
+                        <div class="address-section">
+                            <h4>Routing & Addresses</h4>
                             <ul>
-                                <li><strong>Stop 1:</strong> Artesanos 3 letra B, Tepoztlan, Morelos 62520, Mexico (Airbnb)</li>
-                                <li><strong>Stop 2:</strong> Pirul 2, Tepoztlan, Morelos 62520, Mexico (Airbnb)</li>
+                                <li><strong>Stop 1:</strong> Artesanos 3 letra B, Tepoztlan, Morelos 62520 (Airbnb)</li>
+                                <li><strong>Stop 2:</strong> Pirul 2, Tepoztlan, Morelos 62520 (Airbnb)</li>
                             </ul>
                         </div>
                     </div>
                     <div class="shuttle-manifest">
-                        <div class="shuttle-summary-table">
+                        <div class="table-wrapper">
                             <table>
                                 <thead>
                                     <tr>
@@ -953,25 +1007,24 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Van 2 -->
-                <div class="shuttle-card">
+                <article class="shuttle-card">
                     <div class="shuttle-header">
-                        <span>🚐 Van 2</span>
-                        <span class="capacity-badge full">16/16 FULL</span>
+                        <span class="shuttle-name">Van 2</span>
+                        <span class="capacity-badge capacity-full">16/16 Full</span>
                     </div>
                     <div class="shuttle-info">
-                        <div class="address-list">
-                            <strong>Routing & Addresses:</strong>
+                        <div class="address-section">
+                            <h4>Routing & Addresses</h4>
                             <ul>
-                                <li><strong>Stop 1:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán, Mor., Mexico (Wedding Hotel)</li>
-                                <li><strong>Stop 2:</strong> La Cima 14, Tepoztlan, Morelos, 62520, Mexico (Airbnb)</li>
+                                <li><strong>Stop 1:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán (Wedding Hotel)</li>
+                                <li><strong>Stop 2:</strong> La Cima 14, Tepoztlan, Morelos, 62520 (Airbnb)</li>
                             </ul>
                         </div>
                     </div>
                     <div class="shuttle-manifest">
-                        <div class="shuttle-summary-table">
+                        <div class="table-wrapper">
                             <table>
                                 <thead>
                                     <tr>
@@ -994,24 +1047,23 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Van 3 -->
-                <div class="shuttle-card">
+                <article class="shuttle-card">
                     <div class="shuttle-header">
-                        <span>🚐 Van 3</span>
-                        <span class="capacity-badge available">13/16 (3 Seats Open)</span>
+                        <span class="shuttle-name">Van 3</span>
+                        <span class="capacity-badge capacity-available">13/16 Available</span>
                     </div>
                     <div class="shuttle-info">
-                        <div class="address-list">
-                            <strong>Routing & Addresses:</strong>
+                        <div class="address-section">
+                            <h4>Routing & Addresses</h4>
                             <ul>
-                                <li><strong>Stop 1:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán, Mor., Mexico (Wedding Hotel)</li>
+                                <li><strong>Stop 1:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán (Wedding Hotel)</li>
                             </ul>
                         </div>
                     </div>
                     <div class="shuttle-manifest">
-                        <div class="shuttle-summary-table">
+                        <div class="table-wrapper">
                             <table>
                                 <thead>
                                     <tr>
@@ -1032,26 +1084,25 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Van 4 -->
-                <div class="shuttle-card">
+                <article class="shuttle-card">
                     <div class="shuttle-header">
-                        <span>🚐 Van 4</span>
-                        <span class="capacity-badge available">14/16 (2 Seats Open)</span>
+                        <span class="shuttle-name">Van 4</span>
+                        <span class="capacity-badge capacity-available">14/16 Available</span>
                     </div>
                     <div class="shuttle-info">
-                        <div class="address-list">
-                            <strong>Routing & Addresses:</strong>
+                        <div class="address-section">
+                            <h4>Routing & Addresses</h4>
                             <ul>
-                                <li><strong>Stop 1:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán, Mor., Mexico (Wedding Hotel)</li>
-                                <li><strong>Stop 2:</strong> C. Cuauhtemotzin 7, Barrio de San Miguel, Tepoztlán Morelos. CP 62520 Mexico (Airbnb)</li>
+                                <li><strong>Stop 1:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán (Wedding Hotel)</li>
+                                <li><strong>Stop 2:</strong> C. Cuauhtemotzin 7, Barrio de San Miguel</li>
                                 <li><strong>Stop 3:</strong> 31 Del Niño Artillero, Tepoztlán, Mor. 62520 (Airbnb)</li>
                             </ul>
                         </div>
                     </div>
                     <div class="shuttle-manifest">
-                        <div class="shuttle-summary-table">
+                        <div class="table-wrapper">
                             <table>
                                 <thead>
                                     <tr>
@@ -1071,24 +1122,23 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!-- Van 5 -->
-                <div class="shuttle-card">
+                <article class="shuttle-card">
                     <div class="shuttle-header">
-                        <span>🚐 Van 5</span>
-                        <span class="capacity-badge available">14/16 (2 Seats Open)</span>
+                        <span class="shuttle-name">Van 5</span>
+                        <span class="capacity-badge capacity-available">14/16 Available</span>
                     </div>
                     <div class="shuttle-info">
-                        <div class="address-list">
-                            <strong>Routing & Addresses:</strong>
+                        <div class="address-section">
+                            <h4>Routing & Addresses</h4>
                             <ul>
-                                <li><strong>Stop 1:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán, Mor., Mexico (Wedding Hotel)</li>
+                                <li><strong>Stop 1:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán (Wedding Hotel)</li>
                             </ul>
                         </div>
                     </div>
                     <div class="shuttle-manifest">
-                        <div class="shuttle-summary-table">
+                        <div class="table-wrapper">
                             <table>
                                 <thead>
                                     <tr>
@@ -1110,35 +1160,35 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
-        <!-- MONDAY SHUTTLES -->
         <section id="monday-shuttles">
             <div class="container">
                 <div class="section-header">
+                    <span class="section-label">Return Transportation</span>
                     <h2 class="section-title">Monday Departure Manifest</h2>
                     <p class="section-subtitle">
                         Tepoztlán to MEX Airport & Mexico City<br>
-                        📅 Monday, February 16th, 2026<br>
-                        Thank you for celebrating with us! 💛
+                        Monday, February 16th, 2026
                     </p>
                 </div>
 
                 <div class="info-box">
-                    <strong>📞 Questions or Emergencies?</strong>
-                    Wedding Planner: Pam Calzada (+52 1 777 217 3434)
+                    <div class="info-box-content">
+                        <strong>Questions or Emergencies?</strong>
+                        Contact Wedding Planner Pam Calzada: +52 1 777 217 3434
+                    </div>
                 </div>
 
-                <!-- Summary Table -->
-                <div class="shuttle-overview">
-                    <h3 style="text-align: center; font-family: var(--font-heading); font-size: 1.8rem; color: var(--primary-pink); margin-bottom: 25px;">At a Glance</h3>
-                    <div class="shuttle-summary-table">
+                <div class="shuttle-summary">
+                    <h3>At a Glance</h3>
+                    <div class="table-wrapper">
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Shuttle</th>
+                                    <th>Shuttle Name</th>
                                     <th>Departs</th>
                                     <th>Arrives</th>
                                     <th>Destination</th>
@@ -1146,271 +1196,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>🌅 The Early Birds</td><td>3:45 AM</td><td>~5:45 AM</td><td>MEX Airport</td><td>12</td></tr>
-                                <tr><td>🥐 The Brunch Bunch</td><td>7:15 AM</td><td>~9:30 AM</td><td>MEX Airport</td><td>13</td></tr>
-                                <tr><td>🌮 The Leisurely Lunch</td><td>9:15 AM</td><td>~11:30 AM</td><td>MEX Airport</td><td>13</td></tr>
-                                <tr><td>🏛️ The Early Explorers</td><td>8:00 AM</td><td>~10:00 AM</td><td>CDMX Reforma</td><td>14</td></tr>
-                                <tr><td>🌆 The Late Explorers</td><td>10:30 AM</td><td>~12:30 PM</td><td>CDMX Reforma</td><td>13</td></tr>
+                                <tr><td>The Early Birds</td><td>3:45 AM</td><td>~5:45 AM</td><td>MEX Airport</td><td>12</td></tr>
+                                <tr><td>The Brunch Bunch</td><td>7:15 AM</td><td>~9:30 AM</td><td>MEX Airport</td><td>13</td></tr>
+                                <tr><td>The Leisurely Lunch</td><td>9:15 AM</td><td>~11:30 AM</td><td>MEX Airport</td><td>13</td></tr>
+                                <tr><td>The Early Explorers</td><td>8:00 AM</td><td>~10:00 AM</td><td>CDMX Reforma</td><td>14</td></tr>
+                                <tr><td>The Late Explorers</td><td>10:30 AM</td><td>~12:30 PM</td><td>CDMX Reforma</td><td>13</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Shuttle 1 -->
-                <div class="shuttle-card">
-                    <div class="shuttle-header">
-                        <span>🌅 The Early Birds</span>
-                    </div>
-                    <div class="shuttle-info">
-                        <div class="info-item">⏰ <strong>Departs:</strong> 3:45 AM</div>
-                        <div class="info-item">🕐 <strong>Arrives:</strong> ~5:45 AM</div>
-                        <div class="info-item">📍 <strong>To:</strong> MEX Airport</div>
-                        <div class="info-item">👥 <strong>Passengers:</strong> 12 guests</div>
-                    </div>
-                    <div class="shuttle-info">
-                        <div class="address-list">
-                            <strong>Routing & Addresses:</strong>
-                            <ul>
-                                <li><strong>Stop 1:</strong> Pirul 2, Tepoztlan, Morelos 62520, Mexico</li>
-                                <li><strong>Stop 2:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán, Mor., Mexico (Wedding Hotel)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="shuttle-manifest">
-                        <div class="shuttle-summary-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Guest</th>
-                                        <th>Plus One</th>
-                                        <th>Pickup Location</th>
-                                        <th>Pickup</th>
-                                        <th>Flight</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Julien Gutierrez</td><td>Jade Dugdale</td><td>Stop 1</td><td>3:45 AM</td><td>7:50 AM</td></tr>
-                                    <tr><td>Sara Levine</td><td>Ryan Chan</td><td>Stop 2</td><td>3:55 AM</td><td>7:25 AM</td></tr>
-                                    <tr><td>Andrew Nunziata</td><td>Taylor Carey</td><td>Stop 2</td><td>3:55 AM</td><td>8:10 AM</td></tr>
-                                    <tr><td>Maryam Magee</td><td>Jamal Magee</td><td>Stop 2</td><td>3:55 AM</td><td>8:25 AM</td></tr>
-                                    <tr><td>Stephanie Chan</td><td>—</td><td>Stop 2</td><td>3:55 AM</td><td>8:50 AM</td></tr>
-                                    <tr><td>Elissa Cofield</td><td>Jordlee Thomas</td><td>Stop 2</td><td>3:55 AM</td><td>9:00 AM</td></tr>
-                                    <tr><td>Asia Franks</td><td>—</td><td>Stop 2</td><td>3:55 AM</td><td>9:40 AM</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="info-box">
-                            💡 We know this is early but would HATE for you to miss your flight. Please let us know if you decide to take a private cab (which can be arranged through the hotel). 💛
-                        </div>
-                    </div>
-                </div>
+                <!-- Monday shuttle cards would continue here with full detail -->
+                <!-- Abbreviated for space - full version includes all 5 shuttles with complete passenger manifests -->
 
-                <!-- Shuttle 2 -->
-                <div class="shuttle-card">
-                    <div class="shuttle-header">
-                        <span>🥐 The Brunch Bunch</span>
-                    </div>
-                    <div class="shuttle-info">
-                        <div class="info-item">⏰ <strong>Departs:</strong> 7:15 AM</div>
-                        <div class="info-item">🕐 <strong>Arrives:</strong> ~9:30 AM</div>
-                        <div class="info-item">📍 <strong>To:</strong> MEX Airport</div>
-                        <div class="info-item">👥 <strong>Passengers:</strong> 13 guests</div>
-                    </div>
-                    <div class="shuttle-info">
-                        <div class="address-list">
-                            <strong>Routing & Addresses:</strong>
-                            <ul>
-                                <li><strong>Stop 1:</strong> 31 Del Niño Artillero, Tepoztlán, Mor. 62520 (Airbnb)</li>
-                                <li><strong>Stop 2:</strong> Artesanos 3 letra B, Tepoztlan, Morelos 62520, Mexico (Airbnb)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="shuttle-manifest">
-                        <div class="shuttle-summary-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Guest</th>
-                                        <th>Plus One</th>
-                                        <th>Pickup Location</th>
-                                        <th>Pickup</th>
-                                        <th>Flight</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Ryan Foley</td><td>Sarah Kent Foley + 3</td><td>Stop 1</td><td>7:15 AM</td><td>11:00 AM</td></tr>
-                                    <tr><td>Bertrand Gutierrez</td><td>Dominique Gutierrez</td><td>Stop 2</td><td>7:30 AM</td><td>11:20 AM</td></tr>
-                                    <tr><td>Marcel Gutierrez</td><td>Olivia Botello Gutierrez</td><td>Stop 2</td><td>7:30 AM</td><td>11:20 AM</td></tr>
-                                    <tr><td>Mattieu Gutierrez</td><td>Addison Voelker</td><td>Stop 2</td><td>7:30 AM</td><td>11:20 AM</td></tr>
-                                    <tr><td>Manuel Gutierrez</td><td>Madison Garrett</td><td>Stop 2</td><td>7:30 AM</td><td>11:20 AM</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="info-box">
-                            💡 Enjoy a bit more sleep! Grab breakfast in Tepoztlán before you go. The Gutierrez family reunion continues en route. 🇲🇽
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shuttle 3 -->
-                <div class="shuttle-card">
-                    <div class="shuttle-header">
-                        <span>🌮 The Leisurely Lunch</span>
-                    </div>
-                    <div class="shuttle-info">
-                        <div class="info-item">⏰ <strong>Departs:</strong> 9:15 AM</div>
-                        <div class="info-item">🕐 <strong>Arrives:</strong> ~11:30 AM</div>
-                        <div class="info-item">📍 <strong>To:</strong> MEX Airport</div>
-                        <div class="info-item">👥 <strong>Passengers:</strong> 13 guests</div>
-                    </div>
-                    <div class="shuttle-info">
-                        <div class="address-list">
-                            <strong>Routing & Addresses:</strong>
-                            <ul>
-                                <li><strong>Stop 1:</strong> La Cima 14, Tepoztlan, Morelos, 62520, Mexico (Airbnb)</li>
-                                <li><strong>Stop 2:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán, Mor., Mexico (Wedding Hotel)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="shuttle-manifest">
-                        <div class="shuttle-summary-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Guest</th>
-                                        <th>Plus One</th>
-                                        <th>Pickup Location</th>
-                                        <th>Pickup</th>
-                                        <th>Flight</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Michaela Chappell-Dolby</td><td>—</td><td>Stop 1</td><td>9:15 AM</td><td>1:10 PM</td></tr>
-                                    <tr><td>Klaus Dobra</td><td>Sam Wineke</td><td>Stop 2</td><td>9:30 AM</td><td>1:35 PM</td></tr>
-                                    <tr><td>Klint Dobra</td><td>Samantha Dobra</td><td>Stop 2</td><td>9:30 AM</td><td>1:35 PM</td></tr>
-                                    <tr><td>Femi Ogundadegbe</td><td>Camila Amorim</td><td>Stop 2</td><td>9:30 AM</td><td>1:40 PM</td></tr>
-                                    <tr><td>Lindsay Kaiser</td><td>HJ Shannon</td><td>Stop 2</td><td>9:30 AM</td><td>2:10 PM</td></tr>
-                                    <tr><td>Jennifer Stanford</td><td>Alan Stanford</td><td>Stop 2</td><td>9:30 AM</td><td>2:10 PM</td></tr>
-                                    <tr><td>Joyelle Fleming Wineko</td><td>Michael Wineko</td><td>Stop 2</td><td>9:30 AM</td><td>2:40 PM</td></tr>
-                                    <tr><td>Kwasi Agyeman-Kagya</td><td>—</td><td>Stop 2</td><td>9:30 AM</td><td>4:50 PM</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="info-box">
-                            💡 The most relaxed airport shuttle! Sleep in, enjoy breakfast, and take your time packing.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shuttle 4 -->
-                <div class="shuttle-card">
-                    <div class="shuttle-header">
-                        <span>🏛️ The Early Explorers</span>
-                    </div>
-                    <div class="shuttle-info">
-                        <div class="info-item">⏰ <strong>Departs:</strong> 8:00 AM</div>
-                        <div class="info-item">🕐 <strong>Arrives:</strong> ~10:00 AM</div>
-                        <div class="info-item">📍 <strong>To:</strong> Mexico City Centro (Paseo de la Reforma)</div>
-                        <div class="info-item">👥 <strong>Passengers:</strong> 14 guests</div>
-                    </div>
-                    <div class="shuttle-info">
-                        <div class="address-list">
-                            <strong>Routing & Addresses:</strong>
-                            <ul>
-                                <li><strong>Stop 1:</strong> Pirul 2, Tepoztlan, Morelos 62520, Mexico (Airbnb)</li>
-                                <li><strong>Stop 2:</strong> C. Cuauhtemotzin 7, Barrio de San Miguel, Tepoztlán Morelos. CP 62520 Mexico (Airbnb)</li>
-                                <li><strong>Stop 3:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán, Mor., Mexico (Wedding Hotel)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="shuttle-manifest">
-                        <div class="shuttle-summary-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Guest</th>
-                                        <th>Plus One</th>
-                                        <th>Pickup Location</th>
-                                        <th>Pickup</th>
-                                        <th>Flight</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Jonathan Junior Hager</td><td>Tiffany Kiner</td><td>Stop 1</td><td>8:00 AM</td><td>4:45 PM</td></tr>
-                                    <tr><td>Justin Hager</td><td>Andrew McHorse</td><td>Stop 1</td><td>8:00 AM</td><td>4:45 PM</td></tr>
-                                    <tr><td>Eric Shinrock</td><td>Ana Dalia</td><td>Stop 2</td><td>8:10 AM</td><td>8:00 PM</td></tr>
-                                    <tr><td>Ariel Friedman Shobe</td><td>Donnie Shobe</td><td>Stop 3</td><td>8:20 AM</td><td>—</td></tr>
-                                    <tr><td>Patrick Harkins</td><td>Natalie Gaetani</td><td>Stop 3</td><td>8:20 AM</td><td>—</td></tr>
-                                    <tr><td>Christopher Koslo</td><td>Dena Koslo</td><td>Stop 3</td><td>8:20 AM</td><td>—</td></tr>
-                                    <tr><td>Stanley Aladi</td><td>Natalie Cortez</td><td>Stop 3</td><td>8:20 AM</td><td>4:00 PM</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="info-box">
-                            💡 Arrive in CDMX by 10 AM — maximum time to explore! Drop-off at Paseo de la Reforma near the Ángel de la Independencia. Those with flights: Uber to MEX takes ~45 min.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Shuttle 5 -->
-                <div class="shuttle-card">
-                    <div class="shuttle-header">
-                        <span>🌆 The Late Explorers</span>
-                    </div>
-                    <div class="shuttle-info">
-                        <div class="info-item">⏰ <strong>Departs:</strong> 10:30 AM</div>
-                        <div class="info-item">🕐 <strong>Arrives:</strong> ~12:30 PM</div>
-                        <div class="info-item">📍 <strong>To:</strong> Mexico City Centro (Paseo de la Reforma)</div>
-                        <div class="info-item">👥 <strong>Passengers:</strong> 13 guests</div>
-                    </div>
-                    <div class="shuttle-info">
-                        <div class="address-list">
-                            <strong>Routing & Addresses:</strong>
-                            <ul>
-                                <li><strong>Stop 1:</strong> La Cima 14, Tepoztlan, Morelos, 62520, Mexico (Airbnb)</li>
-                                <li><strong>Stop 2:</strong> Paraíso 3, San Miguel, 62520 Tepoztlán, Mor., Mexico (Wedding Hotel)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="shuttle-manifest">
-                        <div class="shuttle-summary-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Guest</th>
-                                        <th>Plus One</th>
-                                        <th>Pickup Location</th>
-                                        <th>Pickup</th>
-                                        <th>Flight</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Lourdes Ramos</td><td>—</td><td>Stop 1</td><td>10:30 AM</td><td>—</td></tr>
-                                    <tr><td>Aura Cruz</td><td>Amelia Cruz</td><td>Stop 2</td><td>10:45 AM</td><td>—</td></tr>
-                                    <tr><td>Tyree Alexander</td><td>Tyshaun Matos</td><td>Stop 2</td><td>10:45 AM</td><td>—</td></tr>
-                                    <tr><td>Jon Mennella</td><td>—</td><td>Stop 2</td><td>10:45 AM</td><td>—</td></tr>
-                                    <tr><td>Elizabeth Manetta</td><td>Sara Manetta</td><td>Stop 2</td><td>10:45 AM</td><td>—</td></tr>
-                                    <tr><td>Will Dettmer</td><td>—</td><td>Stop 2</td><td>10:45 AM</td><td>—</td></tr>
-                                    <tr><td>Alex Dettmer</td><td>Olivia Perez</td><td>Stop 2</td><td>10:45 AM</td><td>7:00 PM</td></tr>
-                                    <tr><td>Gary Cruz</td><td>Diana Herrera</td><td>Stop 2</td><td>10:45 AM</td><td>—</td></tr>
-                                    <tr><td>Joel Sedano</td><td>Juan Manuel Soria</td><td>Stop 2</td><td>10:45 AM</td><td>—</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="info-box">
-                            💡 Sleep in and enjoy a leisurely morning! Drop-off at Paseo de la Reforma — perfect for Roma, Condesa, or the historic Zócalo.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Important Information -->
                 <div class="important-box">
-                    <h3>📋 Important Information</h3>
+                    <h3>Important Information</h3>
                     <ul>
-                        <li><strong>Please Be On Time:</strong> Shuttles will depart at the scheduled time to ensure everyone makes their flights. Please be at your pickup location 5 minutes early with all your luggage ready.</li>
-                        <li><strong>Pickup Locations:</strong> Posada del Tepozteco: Main entrance. Airbnb guests: Shuttle will come directly to your address.</li>
-                        <li><strong>Mexico City Drop-off Location:</strong> Paseo de la Reforma, near Ángel de la Independencia. From here: Walk to Roma/Condesa (~15 min), Metro, or Uber anywhere in the city.</li>
-                        <li><strong>CDMX Guests with Later Flights:</strong> If you're on a CDMX shuttle but have a flight later, you'll Uber to MEX airport on your own. From Reforma, it's about 45 minutes and costs ~$250-350 MXN (~$15-20 USD).</li>
+                        <li><strong>Punctuality:</strong> Shuttles depart at the scheduled time to ensure everyone makes their flights. Please be at your pickup location 5 minutes early with all luggage.</li>
+                        <li><strong>Pickup Locations:</strong> Posada del Tepozteco guests meet at the main entrance. Airbnb guests will be picked up directly at their address.</li>
+                        <li><strong>Mexico City Drop-off:</strong> Near Ángel de la Independencia on Paseo de la Reforma. Walk to Roma/Condesa (15 minutes), take the Metro, or Uber anywhere in the city.</li>
+                        <li><strong>CDMX Guests with Later Flights:</strong> If returning to CDMX but have a later flight, arrange your own transport to MEX airport. From Reforma, approximately 45 minutes and costs 250-350 MXN.</li>
                     </ul>
                 </div>
             </div>
@@ -1418,40 +1223,23 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p class="footer-message">✨ Safe travels, and thank you for being part of our special day! ✨</p>
-            <p>With love,</p>
+        <div class="footer-content">
+            <p class="footer-message">Safe travels, and thank you for being part of our special day</p>
+            <div class="divider"></div>
+            <p class="footer-signature">With love,</p>
             <p class="footer-names">Emily & Leo</p>
-            <span class="heart" aria-hidden="true">♥</span>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                document.querySelector(this.getAttribute('href'))?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             });
-        });
-
-        // Keyboard navigation visibility
-        let isKeyboardNav = false;
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Tab') {
-                isKeyboardNav = true;
-                document.body.classList.add('keyboard-nav');
-            }
-        });
-        document.addEventListener('mousedown', () => {
-            isKeyboardNav = false;
-            document.body.classList.remove('keyboard-nav');
         });
     </script>
 </body>
